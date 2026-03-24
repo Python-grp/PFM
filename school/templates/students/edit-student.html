@@ -94,12 +94,19 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>Student Image</label>
-                                        <input type="file" name="student_image" class="form-control">
-                                        <small>Current Image: {{ student.student_image.url }}</small>
-                                    </div>
-                                </div>
+    <div class="form-group">
+        <label>Student Image</label>
+        <input type="file" name="student_image" class="form-control">
+        <small>
+            Current Image: 
+            {% if student.student_image %}
+                <a href="{{ student.student_image.url }}" target="_blank">View Image</a>
+            {% else %}
+                No image uploaded
+            {% endif %}
+        </small>
+    </div>
+</div>
                                 <div class="col-12">
                                     <h5 class="form-title"><span>Parent Information</span></h5>
                                 </div>

@@ -1,0 +1,124 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Teacher Details</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/teacher">Teachers</a></li>
+                        <li class="breadcrumb-item active">Teacher Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="about-info">
+                            <h4>About Me</h4>
+                            <div class="media mt-3">
+                                {% if teacher.teacher_image %}
+                                   <img src="{{ teacher.teacher_image.url }}" class="mr-3" alt="Teacher Image">
+                                {% else %}
+                                   <img src="{% static 'path/to/default-image.png' %}" class="mr-3" alt="Teacher Image">
+                                {% endif %}
+                                <div class="media-body">
+                                    <ul>
+                                        <li>
+                                            <span class="title-span">Full Name : </span>
+                                            <span class="info-span">{{ teacher.first_name }} {{ teacher.last_name }}</span>
+                                        </li>
+                                        <li>
+                                            <span class="title-span">Teacher ID : </span>
+                                            <span class="info-span">{{ teacher.teacher_id }}</span>
+                                        </li>
+                                        <li>
+                                            <span class="title-span">Mobile : </span>
+                                            <span class="info-span">{{ teacher.mobile_number }}</span>
+                                        </li>
+                                        <li>
+                                            <span class="title-span">Gender : </span>
+                                            <span class="info-span">{{ teacher.gender }}</span>
+                                        </li>
+                                        <li>
+                                            <span class="title-span">Date of Birth : </span>
+                                            <span class="info-span">{{ teacher.date_of_birth }}</span>
+                                        </li>
+                                        <li>
+                                            <span class="title-span">Joining Date : </span>
+                                            <span class="info-span">{{ teacher.joining_date }}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <p>Hello! I am {{ teacher.first_name }} {{ teacher.last_name }}, a passionate educator dedicated to helping students excel in their academics.</p>
+                                </div>
+                            </div>
+
+                            <div class="row follow-sec">
+                                <div class="col-md-4 mb-3">
+                                    <div class="blue-box">
+                                        <h3>120</h3>
+                                        <p>Classes Taken</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="blue-box">
+                                        <h3>45</h3>
+                                        <p>Subjects</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="blue-box">
+                                        <h3>250</h3>
+                                        <p>Students</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <h5>Biography</h5>
+                                    <p>{{ teacher.first_name }} has been teaching since {{ teacher.joining_date }}. Experienced in multiple subjects including Math, Science, and English. Passionate about student engagement and innovative teaching methods.</p>
+                                </div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <h5>Certificates & Achievements</h5>
+                                    <p>Best Teacher Award – 2024</p>
+                                    <p>Excellence in Teaching – 2023</p>
+                                    <p>Certified in Advanced Teaching Methods – 2022</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Copyright © 2026 Dreamguys.</p>
+    </footer>
+</div>
+
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+{% endblock %}

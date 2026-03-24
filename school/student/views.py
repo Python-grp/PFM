@@ -74,7 +74,7 @@ def add_student(request):
    return render(request, 'students/add-student.html')  
 
 def edit_student(request, student_id):
-    student = get_object_or_404(Student , student_id=student_id )
+    student = get_object_or_404(Student, pk=student_id)
     parent = student.parent
 
     if request.method == 'POST':
@@ -111,11 +111,11 @@ def edit_student(request, student_id):
     return render(request, 'students/edit-student.html' , {'student' : student , 'parent' : parent})
 
 def view_student(request, student_id):
-  student = get_object_or_404(Student ,student_id = student_id )
+  student = get_object_or_404(Student , pk=student_id )
   return render(request, 'students/student-details.html' , {'student' : student})
 
 def delete_student(request, student_id):
-  student = get_object_or_404(Student , student_id = student_id)
+  student = get_object_or_404(Student, pk=student_id)
   student.delete()
   messages.success(request , 'Student deleted successfully')
   return redirect('student_list')

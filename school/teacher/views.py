@@ -34,10 +34,10 @@ def add_teacher(request):
         messages.success(request, 'Teacher added Successfully')
         return redirect('teacher_list')  
     else : 
-       return render(request , 'teacher/add-teacher.html')
+       return render(request , 'teachers/add-teacher.html')
     
 def edit_teacher(request , teacher_id) : 
-  teacher = get_object_or_404(Teacher , teacher_id = teacher_id)
+  teacher = get_object_or_404(Teacher , pk=teacher_id)
 
   if request.method == 'POST':
    
@@ -57,14 +57,14 @@ def edit_teacher(request , teacher_id) :
     messages.success(request , 'Teacher updated successfully')
     return redirect('teacher_list')  
   
-  return render(request , 'teacher/edit-teacher.html' , {'teacher' : teacher})    
+  return render(request , 'teachers/edit-teacher.html' , {'teacher' : teacher})    
 
 def view_teacher(request, teacher_id):
-  teacher = get_object_or_404(Teacher ,teacher_id = teacher_id )
-  return render(request, 'teacher/teacher-details.html' , {'teacher' : teacher})
+  teacher = get_object_or_404(Teacher ,pk=teacher_id )
+  return render(request, 'teachers/teacher-details.html' , {'teacher' : teacher})
 
 def delete_teacher(request, teacher_id):
-  teacher = get_object_or_404(Teacher , teacher_id = teacher_id)
+  teacher = get_object_or_404(Teacher , pk=teacher_id)
   teacher.delete()
   messages.success(request , 'Teacher deleted successfully')
   return redirect('teacher_list') 
