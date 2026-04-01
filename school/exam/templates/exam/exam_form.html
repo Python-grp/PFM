@@ -1,0 +1,72 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">{% if object %}Modifier{% else %}Ajouter{% endif %} un Examen</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'exam-list' %}">Examens</a></li>
+                        <li class="breadcrumb-item active">{% if object %}Modifier{% else %}Ajouter{% endif %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="form-title"><span>Détails de l'examen</span></h5>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Titre de l'examen <span class="text-danger">*</span></label>
+                                        {{ form.title }}
+                                        {% if form.title.errors %}
+                                            <small class="text-danger">{{ form.title.errors }}</small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Date <span class="text-danger">*</span></label>
+                                        {{ form.date }}
+                                        {% if form.date.errors %}
+                                            <small class="text-danger">{{ form.date.errors }}</small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Matière rattachée <span class="text-danger">*</span></label>
+                                        {{ form.subject }}
+                                        {% if form.subject.errors %}
+                                            <small class="text-danger">{{ form.subject.errors }}</small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Description Facultative</label>
+                                        {{ form.description }}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    <a href="{% url 'exam-list' %}" class="btn btn-secondary ml-2">Annuler</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

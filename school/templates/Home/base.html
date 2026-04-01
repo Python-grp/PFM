@@ -90,22 +90,21 @@
                      <li class="submenu active">
                         <a href="#"><i class="fas fa-user-graduate"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
                         <ul>
+                           {% if request.user.is_admin %}
                            <li><a href="{% url 'admin_dashboard' %}" class="active">Admin Dashboard</a></li>
+                           {% elif request.user.is_teacher %}
                            <li><a href="{% url 'teacher_dashboard' %}">Teacher Dashboard</a></li>
+                           {% elif request.user.is_student %}
                            <li><a href="{% url 'student_dashboard' %}">Student Dashboard</a></li>
+                           {% endif %}
                         </ul>
                      </li>
+                     {% if request.user.is_admin %}
                      <li class="submenu">
                         <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
                         <ul>
                            <li><a href="{% url 'student_list' %}">Student List</a></li>
-                           {% for student in student_list %}
-                           <li><a href="{% url 'view_student' student_id=student.id %}">{{ student.first_name }} {{ student.last_name }}</a></li>
-                           {% endfor %}
                            <li><a href="{% url 'add_student' %}">Student Add</a></li>
-                           {% for student in student_list %}
-                           <li><a href="{% url 'edit_student' student_id=student.id %}"> Edit {{ student.first_name }} {{ student.last_name }}</a></li>
-                           {% endfor %}
                         </ul>
                      </li>
                      <li class="submenu">
@@ -113,26 +112,20 @@
                         <ul>
                            <li><a href="{% url 'teacher_list' %}">Teacher List</a></li>
                            <li><a href="{% url 'add_teacher' %}">Teacher Add</a></li>
-                           {% for teacher in teacher_list %}
-                           <li><a href="{% url 'view_teacher' teacher_id=teacher.id %}">View {{ teacher.first_name }} {{ teacher.last_name }}</a></li>
-                           <li><a href="{% url 'edit_teacher' teacher_id=teacher.id %}">Edit {{ teacher.first_name }} {{ teacher.last_name }}</a></li>
-                           {% endfor %}
                         </ul>
                      </li>
                      <li class="submenu">
                         <a href="#"><i class="fas fa-building"></i> <span> Departments</span> <span class="menu-arrow"></span></a>
                         <ul>
-                           <li><a href="departments.html">Department List</a></li>
-                           <li><a href="add-department.html">Department Add</a></li>
-                           <li><a href="edit-department.html">Department Edit</a></li>
+                           <li><a href="{% url 'department-list' %}">Department List</a></li>
+                           <li><a href="{% url 'department-add' %}">Department Add</a></li>
                         </ul>
                      </li>
                      <li class="submenu">
                         <a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span> <span class="menu-arrow"></span></a>
                         <ul>
-                           <li><a href="subjects.html">Subject List</a></li>
-                           <li><a href="add-subject.html">Subject Add</a></li>
-                           <li><a href="edit-subject.html">Subject Edit</a></li>
+                           <li><a href="{% url 'subject-list' %}">Subject List</a></li>
+                           <li><a href="{% url 'subject-add' %}">Subject Add</a></li>
                         </ul>
                      </li>
                      <li class="menu-title">
@@ -144,29 +137,27 @@
                            <li><a href="fees-collections.html">Fees Collection</a></li>
                            <li><a href="expenses.html">Expenses</a></li>
                            <li><a href="salary.html">Salary</a></li>
-                           <li><a href="add-fees-collection.html">Add Fees</a></li>
-                           <li><a href="add-expenses.html">Add Expenses</a></li>
-                           <li><a href="add-salary.html">Add Salary</a></li>
                         </ul>
                      </li>
+                     {% endif %}
                      <li>
-                        <a href="{% url 'holidays' %}"><i class="fas fa-holly-berry"></i> <span>Holiday</span></a>
+                        <a href="{% url 'holiday-list' %}"><i class="fas fa-holly-berry"></i> <span>Holiday</span></a>
                      </li>
                      <li>
-                        <a href="fees.html"><i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
+                        <a href="{% url 'timetable-list' %}"><i class="fas fa-table"></i> <span>Time Table</span></a>
                      </li>
                      <li>
-                        <a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
+                        <a href="{% url 'exam-list' %}"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
                      </li>
+                     {% if request.user.is_teacher or request.user.is_admin %}
                      <li>
-                        <a href="event.html"><i class="fas fa-calendar-day"></i> <span>Events</span></a>
+                        <a href="{% url 'result-list' %}"><i class="fas fa-clipboard-check"></i> <span>Result list</span></a>
                      </li>
+                     {% elif request.user.is_student %}
                      <li>
-                        <a href="{% url 'timetable' %}"><i class="fas fa-table"></i> <span>Time Table</span></a>
+                        <a href="{% url 'result-list' %}"><i class="fas fa-clipboard-check"></i> <span>My Results</span></a>
                      </li>
-                     <li>
-                        <a href="library.html"><i class="fas fa-book"></i> <span>Library</span></a>
-                     </li>
+                     {% endif %}
                      <li class="menu-title">
                         <span>Pages</span>
                      </li>
@@ -219,7 +210,7 @@
                         </ul>
                      </li>
                      <li class="submenu">
-                        <a href="javascript:void(0);"><i class="fas fa-code"></i> <span>Multi Level</span> <span class="menu-arrow"></span></a>
+                        <a href="#"><i class="fas fa-code"></i> <span>Multi Level</span> <span class="menu-arrow"></span></a>
                         <ul>
                            <li class="submenu">
                               <a href="javascript:void(0);"> <span>Level 1</span> <span class="menu-arrow"></span></a>
@@ -245,6 +236,21 @@
             </div>
          </div>
 
+
+         {% if messages %}
+         <div class="row" style="position: absolute; top: 70px; right: 20px; z-index: 9999; margin-left: 20px; text-align: center;">
+             <div class="col-sm-12">
+                 {% for message in messages %}
+                     <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                         {{ message }}
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                         </button>
+                     </div>
+                 {% endfor %}
+             </div>
+         </div>
+         {% endif %}
 
          {% block body %}
             

@@ -1,0 +1,78 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Examens</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'admin_dashboard' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Examens</li>
+                    </ul>
+                </div>
+                <div class="col-auto text-right float-right ml-auto">
+                    {% if request.user.is_admin or request.user.is_teacher %}
+                    <a href="{% url 'exam-add' %}" class="btn btn-primary"><i class="fas fa-plus"></i> Add Exam</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-table">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-center mb-0 datatable">
+                                <thead>
+                                    <tr>
+                                        <th>Cible (ID)</th>
+                                        <th>Titre de l'examen</th>
+                                        <th>Matière</th>
+                                        <th>Date</th>
+                                        {% if request.user.is_admin or request.user.is_teacher %}
+                                        <th class="text-right">Action</th>
+                                        {% endif %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in exam_list %}
+                                    <tr>
+                                        <td>{{ item.id }}</td>
+                                        <td>
+                                            <h2><a>{{ item.title }}</a></h2>
+                                        </td>
+                                        <td>{{ item.subject.name|default:"-" }}</td>
+                                        <td>{{ item.date|date:"d M Y" }}</td>
+                                        {% if request.user.is_admin or request.user.is_teacher %}
+                                        <td class="text-right">
+                                            <div class="actions">
+                                                <a href="{% url 'exam-edit' item.id %}" class="btn btn-sm bg-success-light mr-2">
+                                                    <i class="fas fa-pen"></i>
+                                                </a>
+                                                <form action="{% url 'exam-delete' item.id %}" method="POST" style="display:inline;">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet examen ?');">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                        {% endif %}
+                                    </tr>
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="5" class="text-center">No Exams Found</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

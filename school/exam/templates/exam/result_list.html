@@ -1,0 +1,80 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Notes et Résultats</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'admin_dashboard' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Résultats</li>
+                    </ul>
+                </div>
+                <div class="col-auto text-right float-right ml-auto">
+                    {% if request.user.is_admin or request.user.is_teacher %}
+                    <a href="{% url 'result-add' %}" class="btn btn-primary"><i class="fas fa-plus"></i> Ajouter une note</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-table">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-center mb-0 datatable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Étudiant</th>
+                                        <th>Examen</th>
+                                        <th>Note finale</th>
+                                        <th>Remarques</th>
+                                        {% if request.user.is_admin or request.user.is_teacher %}
+                                        <th class="text-right">Action</th>
+                                        {% endif %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in result_list %}
+                                    <tr>
+                                        <td>{{ item.id }}</td>
+                                        <td>
+                                            <h2><a>{{ item.student.first_name }} {{ item.student.last_name }}</a></h2>
+                                        </td>
+                                        <td>{{ item.exam.title }}</td>
+                                        <td><strong>{{ item.marks_obtained }} / {{ item.total_marks }}</strong></td>
+                                        <td>{{ item.remarks|default:"-" }}</td>
+                                        {% if request.user.is_admin or request.user.is_teacher %}
+                                        <td class="text-right">
+                                            <div class="actions">
+                                                <a href="{% url 'result-edit' item.id %}" class="btn btn-sm bg-success-light mr-2">
+                                                    <i class="fas fa-pen"></i>
+                                                </a>
+                                                <form action="{% url 'result-delete' item.id %}" method="POST" style="display:inline;">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce résultat ?');">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                        {% endif %}
+                                    </tr>
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="6" class="text-center">Aucun Résultat Trouvé</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

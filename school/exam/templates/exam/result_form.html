@@ -1,0 +1,82 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">{% if object %}Modifier{% else %}Ajouter{% endif %} un Résultat</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'result-list' %}">Résultats</a></li>
+                        <li class="breadcrumb-item active">{% if object %}Modifier{% else %}Ajouter{% endif %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="form-title"><span>Détails de la note</span></h5>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Étudiant <span class="text-danger">*</span></label>
+                                        {{ form.student }}
+                                        {% if form.student.errors %}
+                                            <small class="text-danger">{{ form.student.errors }}</small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Examen <span class="text-danger">*</span></label>
+                                        {{ form.exam }}
+                                        {% if form.exam.errors %}
+                                            <small class="text-danger">{{ form.exam.errors }}</small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Note Obtenue <span class="text-danger">*</span></label>
+                                        {{ form.marks_obtained }}
+                                        {% if form.marks_obtained.errors %}
+                                            <small class="text-danger">{{ form.marks_obtained.errors }}</small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Note sur (Total) <span class="text-danger">*</span></label>
+                                        {{ form.total_marks }}
+                                        {% if form.total_marks.errors %}
+                                            <small class="text-danger">{{ form.total_marks.errors }}</small>
+                                        {% endif %}
+                                        <small class="form-text text-muted">Par défaut : 20.00</small>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Remarques Facultatives</label>
+                                        {{ form.remarks }}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    <a href="{% url 'result-list' %}" class="btn btn-secondary ml-2">Annuler</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

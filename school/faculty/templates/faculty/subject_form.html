@@ -1,0 +1,72 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">{% if object %}Modifier{% else %}Ajouter{% endif %} une Matière</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'subject-list' %}">Matières</a></li>
+                        <li class="breadcrumb-item active">{% if object %}Modifier{% else %}Ajouter{% endif %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="form-title"><span>Détails de la Matière</span></h5>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Nom de la matière <span class="text-danger">*</span></label>
+                                        {{ form.name }}
+                                        {% if form.name.errors %}
+                                            <small class="text-danger">{{ form.name.errors }}</small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Code <span class="text-danger">*</span></label>
+                                        {{ form.code }}
+                                        {% if form.code.errors %}
+                                            <small class="text-danger">{{ form.code.errors }}</small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Département rattaché <span class="text-danger">*</span></label>
+                                        {{ form.department }}
+                                        {% if form.department.errors %}
+                                            <small class="text-danger">{{ form.department.errors }}</small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Enseignant Principal (Optionnel)</label>
+                                        {{ form.teacher }}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    <a href="{% url 'subject-list' %}" class="btn btn-secondary ml-2">Annuler</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

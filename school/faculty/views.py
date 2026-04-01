@@ -35,3 +35,59 @@ def teacher_dashboard(request):
 @login_required
 def student_dashboard(request):
     return render(request, 'students/student-dashboard.html')
+
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from .models import Department, Subject
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from home_auth.decorators import admin_required
+
+from .forms import DepartmentForm, SubjectForm
+
+class AdminRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_authenticated and getattr(self.request.user, 'is_admin', False)
+
+class DepartmentListView(LoginRequiredMixin, ListView):
+    model = Department
+    template_name = 'faculty/department_list.html'
+    context_object_name = 'department_list'
+
+class DepartmentCreateView(AdminRequiredMixin, CreateView):
+    model = Department
+    form_class = DepartmentForm
+    template_name = 'faculty/department_form.html'
+    success_url = reverse_lazy('department-list')
+
+class DepartmentUpdateView(AdminRequiredMixin, UpdateView):
+    model = Department
+    form_class = DepartmentForm
+    template_name = 'faculty/department_form.html'
+    success_url = reverse_lazy('department-list')
+
+class DepartmentDeleteView(AdminRequiredMixin, DeleteView):
+    model = Department
+    template_name = 'faculty/department_confirm_delete.html'
+    success_url = reverse_lazy('department-list')
+
+class SubjectListView(LoginRequiredMixin, ListView):
+    model = Subject
+    template_name = 'faculty/subject_list.html'
+    context_object_name = 'subject_list'
+
+class SubjectCreateView(AdminRequiredMixin, CreateView):
+    model = Subject
+    form_class = SubjectForm
+    template_name = 'faculty/subject_form.html'
+    success_url = reverse_lazy('subject-list')
+
+class SubjectUpdateView(AdminRequiredMixin, UpdateView):
+    model = Subject
+    form_class = SubjectForm
+    template_name = 'faculty/subject_form.html'
+    success_url = reverse_lazy('subject-list')
+
+class SubjectDeleteView(AdminRequiredMixin, DeleteView):
+    model = Subject
+    template_name = 'faculty/subject_confirm_delete.html'
+    success_url = reverse_lazy('subject-list')

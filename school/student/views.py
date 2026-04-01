@@ -2,12 +2,17 @@ from django.shortcuts import render , redirect , get_object_or_404
 from django.http import HttpResponse
 from . models import Student , Parent 
 from django.contrib import messages 
+from django.contrib.auth.decorators import login_required
+from home_auth.decorators import admin_required
+from home_auth.models import CustomUser
 
 # Create your views here.
+@login_required
 def student_list(request):
   students = Student.objects.all()
   return render(request, "students/students.html" , {'student_list' : students})
   
+@admin_required
 def add_student(request):
   if request.method == 'POST':
    
@@ -68,11 +73,21 @@ def add_student(request):
   )
    
 # 3. Afficher message et rediriger vers la liste
+   if not CustomUser.objects.filter(username=student_id).exists():
+       CustomUser.objects.create_user(
+           username=student_id, 
+           email=f"{student_id}@student.preskool.com", 
+           password=student_id, 
+           is_student=True, 
+           first_name=first_name, 
+           last_name=last_name
+       )
    messages.success(request, 'Student added Successfully')
    return redirect('student_list')  
   else:
    return render(request, 'students/add-student.html')  
 
+@admin_required
 def edit_student(request, student_id):
     student = get_object_or_404(Student, pk=student_id)
     parent = student.parent
@@ -110,10 +125,12 @@ def edit_student(request, student_id):
 
     return render(request, 'students/edit-student.html' , {'student' : student , 'parent' : parent})
 
+@login_required
 def view_student(request, student_id):
   student = get_object_or_404(Student , pk=student_id )
   return render(request, 'students/student-details.html' , {'student' : student})
 
+@admin_required
 def delete_student(request, student_id):
   student = get_object_or_404(Student, pk=student_id)
   student.delete()

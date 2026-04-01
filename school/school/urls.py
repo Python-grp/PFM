@@ -23,6 +23,6 @@ urlpatterns = [
     path('student/' , include('student.urls')),
     path('authentication/', include('home_auth.urls')),
     path('teacher/' , include('teacher.urls')),
-    path('planning/',include('planning.urls'))
-
+    path('planning/',include('planning.urls')),
+    path('exam/', include('exam.urls')),
 ]
