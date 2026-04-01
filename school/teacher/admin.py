@@ -9,3 +9,4 @@ class TeacherAdmin(admin.ModelAdmin):
   search_fields = ('first_name', 'last_name', 'teacher_id')
   list_filter = ('gender',)
   readonly_fields = ('teacher_image',)
+list_display = ('first_name', 'last_name', 'teacher_id', 'departement')
