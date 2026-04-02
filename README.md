@@ -68,12 +68,14 @@ school/
 │ ├── views.py
 
 │ └── urls.py
+
 │
 ├── templates/
 
 │ ├── authentication/
 
 │ └── students/
+
 │
 ├── static/
 
