@@ -82,7 +82,6 @@ school/
 └── manage.py
 
 ---
-
 ## ⚙️ Tech Stack
 
 - **Backend:** Django (Python)
@@ -100,34 +99,29 @@ school/
 git clone https://github.com/Python-grp/PFM.git
 cd PFM
 cd school
-
-2. Create virtual environment
+Create virtual environment
 python -m venv monenv
 monenv\Scripts\activate      # Windows
 # source monenv/bin/activate  # Linux/Mac
-
-3. Install dependencies
+Install dependencies
 pip install -r ../requirements.txt
-
-4. Apply migrations
+Apply migrations
 python manage.py makemigrations
 python manage.py migrate
-
-5. Create superuser
+Create superuser
 python manage.py createsuperuser
-
-6. Run server
+. Run server
 python manage.py runserver
-
-👉 Open in browser: http://127.0.0.1:8000
-
+-----------------> Open in browser:
+ http://127.0.0.1:8000
 🔑 Test Credentials (optional)
 Admin:
-email: admin@test.com
-password: 123456
-🎥 Demo Video
 
-👉 Add your demo video link here
+email: admin@test.com
+
+password: 123456
+
+
 ## 🎬 Demo & Screenshots
 
 ### 🎥 Demo Videos by Role
