@@ -81,7 +81,6 @@ school/
 │
 └── manage.py
 
----
 ## ⚙️ Tech Stack
 
 - **Backend:** Django (Python)
@@ -112,8 +111,7 @@ Create superuser
 python manage.py createsuperuser
 . Run server
 python manage.py runserver
------------------> Open in browser:
- http://127.0.0.1:8000
+-----------------> Open in browser: http://127.0.0.1:8000
 🔑 Test Credentials (optional)
 Admin:
 
@@ -121,36 +119,56 @@ email: admin@test.com
 
 password: 123456
 
+git clone https://github.com/Python-grp/PFM.git
+cd PFM
+cd school
+Create virtual environment
+```
+### 2.Create virtual environment
+```bash
+python -m venv monenv
+monenv\Scripts\activate      # Windows
+# source monenv/bin/activate  # Linux/Mac
+Install dependencies
+```
+### 3.Install dependencies
+```bash
+pip install -r ../requirements.txt
+Apply migrations
+```
+### 4.Apply migrations
+```bash
+python manage.py makemigrations
+python manage.py migrate
+Create superuser
+```
+### 5.Create superuser
+```bash
+python manage.py createsuperuser
+. Run server
+```
+### 6.Run server
+```bash
+python manage.py runserver
+-----------------> Open in browser: http://127.0.0.1:8000
+```
+--> Open in browser: http://127.0.0.1:8000
 
-## 🎬 Demo & Screenshots
 
-### 🎥 Demo Videos by Role
+🔑 Test Credentials (optional)
 
-#### 👨‍💼 Admin Demo
-👉 [Watch Admin Demo](your-admin-video-link)
+Admin:
+email: admin@test.com
+password: 123456
 
-#### 👨‍🏫 Teacher Demo
-👉 [Watch Teacher Demo](your-teacher-video-link)
+🎥 Demo Video
+to add later
 
-#### 👨‍🎓 Student Demo
-👉 [Watch Student Demo](your-student-video-link)
+📸 Screenshots
+to add later 
 
----
-
-### 📸 Screenshots
-
-#### 🖥️ Dashboard
-![Dashboard](link)
-
-#### 👨‍🎓 Student Management
-![Students](link)
-
-#### 👨‍🏫 Teacher Management
-![Teachers](link)
-
-#### ⚙️ Admin Panel
-![Admin](link)
 📚 What We Learned
+
 Django MVT architecture
 
 Multi-app project structure
@@ -160,6 +178,7 @@ Custom authentication system
 CRUD operations
 
 Database relationships (OneToOne)
+
 ⚠️ Challenges Faced
 
 Configuring custom user model
@@ -172,7 +191,7 @@ Handling static and media files
 
 👥 Authors
 
- Oussama Jabir
+Oussama Jabir
 
 Zineb Khbiaz
 
