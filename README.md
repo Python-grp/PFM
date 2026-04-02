@@ -75,7 +75,9 @@ school/
 │ └── students/
 │
 ├── static/
+
 │ └── assets/
+
 │
 └── manage.py
 
