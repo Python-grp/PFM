@@ -1,3 +1,4 @@
+
 # 🎓 PreSkool - School Management System
 
 ## 📌 About the Project
@@ -81,6 +82,8 @@ school/
 │
 └── manage.py
 
+---
+
 ## ⚙️ Tech Stack
 
 - **Backend:** Django (Python)
@@ -98,77 +101,106 @@ school/
 git clone https://github.com/Python-grp/PFM.git
 cd PFM
 cd school
-Create virtual environment
-python -m venv monenv
-monenv\Scripts\activate      # Windows
-# source monenv/bin/activate  # Linux/Mac
-Install dependencies
-pip install -r ../requirements.txt
-Apply migrations
-python manage.py makemigrations
-python manage.py migrate
-Create superuser
-python manage.py createsuperuser
-. Run server
-python manage.py runserver
------------------> Open in browser: http://127.0.0.1:8000
-🔑 Test Credentials (optional)
-Admin:
-
-email: admin@test.com
-
-password: 123456
-
-git clone https://github.com/Python-grp/PFM.git
-cd PFM
-cd school
-Create virtual environment
 ```
-### 2.Create virtual environment
+
+### 2. Create virtual environment
 ```bash
 python -m venv monenv
 monenv\Scripts\activate      # Windows
 # source monenv/bin/activate  # Linux/Mac
-Install dependencies
 ```
-### 3.Install dependencies
+
+### 3. Install dependencies
 ```bash
 pip install -r ../requirements.txt
-Apply migrations
 ```
-### 4.Apply migrations
+
+### 4. Apply migrations
 ```bash
 python manage.py makemigrations
 python manage.py migrate
-Create superuser
 ```
-### 5.Create superuser
+
+### 5. Create superuser
 ```bash
 python manage.py createsuperuser
-. Run server
 ```
-### 6.Run server
+
+### 6. Run server
 ```bash
 python manage.py runserver
------------------> Open in browser: http://127.0.0.1:8000
 ```
---> Open in browser: http://127.0.0.1:8000
 
+----> Open in browser: http://127.0.0.1:8000
 
 🔑 Test Credentials (optional)
-
+---
 Admin:
 email: admin@test.com
 password: 123456
 
-🎥 Demo Video
-to add later
+--------------
 
-📸 Screenshots
-to add later 
+## 🎬 Demo & Screenshots
+
+### 🎥 Demo Videos by Role
+---
+
+#### 👨‍💼 Admin Demo
+ [Watch Admin Demo](https://github.com/Python-grp/PFM/releases/download/v1.0.0/admin.mp4)
+
+#### 👨‍🏫 Teacher Demo
+ [Watch Teacher Demo](https://github.com/Python-grp/PFM/releases/download/v2.0.0/Teacher.mp4)
+
+#### 👨‍🎓 Student Demo
+ [Watch Student Demo](your-student-video-link)
+
+
+### 📸 Screenshots
+---
+#### ⚙️ Admin Panel
+![Image](https://github.com/user-attachments/assets/cc363c95-b2b3-4389-94da-f4a0e7ac72c8)
+
+![Image](https://github.com/user-attachments/assets/b1ef9f64-7e75-4b3f-aafc-1f8983ff2008)
+
+![Image](https://github.com/user-attachments/assets/cab33231-cd08-4bed-8a4f-36abbccac7e8)
+
+![Image](https://github.com/user-attachments/assets/398f47c3-46bb-4669-86f3-12231d40ef0c)
+
+![Image](https://github.com/user-attachments/assets/a22346a7-49ec-4605-956f-b7e87d1bf2b3)
+
+![Image](https://github.com/user-attachments/assets/36f660e2-e5ec-452b-9b8e-aa5b4e3798e8)
+
+![Image](https://github.com/user-attachments/assets/c3b75d43-bd72-4822-bc46-8b0f73bfba70)
+
+![Image](https://github.com/user-attachments/assets/162d740f-a31a-4875-bc7d-f3b216b48695)
+
+![Image](https://github.com/user-attachments/assets/9e94fdee-4301-4013-ae3e-b58ff75eac11)
+
+![Image](https://github.com/user-attachments/assets/95a0e6af-a3a1-4e03-873c-ae1d6e88cac1)
+
+![Image](https://github.com/user-attachments/assets/7b055e23-3d21-4383-afdd-df8cb5d63dd9)
+
+![Image](https://github.com/user-attachments/assets/5cc81296-b15e-4a3c-beb8-3a87b7c99614)
+
+#### 👨‍🏫 Teacher Management
+![Teachers](link)
+
+#### 👨‍🎓 Student Management
+![Image](https://github.com/user-attachments/assets/1c9f9780-09a7-4065-827b-419c860ee18b)
+
+![Image](https://github.com/user-attachments/assets/683dd4de-fde2-4ec8-99b8-126b54c86835)
+
+![Image](https://github.com/user-attachments/assets/55610c98-edb3-43f5-863c-cae55e838731)
+
+![Image](https://github.com/user-attachments/assets/326fc564-9a12-40c6-9480-4bd26074e5cb)
+
+![Image](https://github.com/user-attachments/assets/acdaa6ea-d7f8-4008-a9a3-e5263431c657)
+
+-----
 
 📚 What We Learned
-
+-
 Django MVT architecture
 
 Multi-app project structure
@@ -180,6 +212,7 @@ CRUD operations
 Database relationships (OneToOne)
 
 ⚠️ Challenges Faced
+-
 
 Configuring custom user model
 
@@ -190,8 +223,9 @@ Linking models and templates
 Handling static and media files
 
 👥 Authors
+-
 
-Oussama Jabir
+ Oussama Jabir
 
 Zineb Khbiaz
 
