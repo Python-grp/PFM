@@ -186,7 +186,17 @@ password: 123456
 ![Image](https://github.com/user-attachments/assets/5cc81296-b15e-4a3c-beb8-3a87b7c99614)
 
 #### 👨‍🏫 Teacher Management
-![Teachers](link)
+<img width="1267" height="601" alt="Image" src="https://github.com/user-attachments/assets/7865fd93-1fc0-4279-974e-d2465078a17d" />
+
+<img width="1284" height="607" alt="Image" src="https://github.com/user-attachments/assets/f3472ce6-5020-421e-9732-96cec368499d" />
+
+<img width="1285" height="608" alt="Image" src="https://github.com/user-attachments/assets/1b61f2b6-a818-4c8b-af5d-a5594f6bfde3" />
+
+<img width="1280" height="605" alt="Image" src="https://github.com/user-attachments/assets/631a7073-0367-498c-b5b4-5f05b24a276b" />
+
+<img width="1266" height="609" alt="Image" src="https://github.com/user-attachments/assets/f9f37d08-5aad-4613-833e-8cebc3faf227" />
+
+<img width="1280" height="606" alt="Image" src="https://github.com/user-attachments/assets/248f3f44-07c3-4a2b-87fb-576ccc47a33a" />
 
 #### 👨‍🎓 Student Management
 
