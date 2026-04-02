@@ -144,6 +144,7 @@ password: 123456
 --------------
 
 ## 🎬 Demo & Screenshots
+https://github.com/user-attachments/assets/f2b2ad5f-4d40-46de-9bc6-944cb150b056
 
 ### 🎥 Demo Videos by Role
 ---
