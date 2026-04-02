@@ -37,9 +37,14 @@ class ResultListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         user = self.request.user
         val_is_student = getattr(user, 'is_student', False)
-        # Assuming username corresponds to student_id for student accounts
+        val_is_teacher = getattr(user, 'is_teacher', False)
+        val_is_admin = getattr(user, 'is_admin', False)
+        
         if val_is_student:
             return Result.objects.filter(student__student_id=user.username)
+        elif val_is_teacher and not val_is_admin:
+            return Result.objects.filter(exam__subject__teacher__teacher_id=user.username)
+        
         return Result.objects.all()
 
 class ResultCreateView(AdminOrTeacherRequiredMixin, CreateView):

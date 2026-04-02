@@ -29,6 +29,12 @@ def add_student(request):
    admission_number = request.POST.get('admission_number')
    section = request.POST.get('section')
    student_image = request.FILES.get('student_image')
+   student_email = request.POST.get('student_email')
+   student_password = request.POST.get('student_password')
+
+   if CustomUser.objects.filter(email=student_email).exists():
+       messages.error(request, 'A user with this email already exists.')
+       return render(request, 'students/add-student.html')
 
 # Récupérer les données du parent
    father_name = request.POST.get('father_name')
@@ -73,15 +79,14 @@ def add_student(request):
   )
    
 # 3. Afficher message et rediriger vers la liste
-   if not CustomUser.objects.filter(username=student_id).exists():
-       CustomUser.objects.create_user(
-           username=student_id, 
-           email=f"{student_id}@student.preskool.com", 
-           password=student_id, 
-           is_student=True, 
-           first_name=first_name, 
-           last_name=last_name
-       )
+   CustomUser.objects.create_user(
+       username=student_id, 
+       email=student_email, 
+       password=student_password, 
+       is_student=True, 
+       first_name=first_name, 
+       last_name=last_name
+   )
    messages.success(request, 'Student added Successfully')
    return redirect('student_list')  
   else:

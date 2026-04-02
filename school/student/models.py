@@ -13,8 +13,8 @@ class Parent(models.Model):
   mother_occupation = models.CharField(max_length=100 , blank=True)
   mother_mobile = models.CharField(max_length=15)
   mother_email = models.EmailField(max_length=100)
-  present_adress = models.TextField()
-  permanent_adress = models.TextField()
+  present_address = models.TextField()
+  permanent_address = models.TextField()
 
   def __str__(self) :
     return f"{self.father_name} & {self.mother_name}"
