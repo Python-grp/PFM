@@ -155,7 +155,7 @@ password: 123456
  [Watch Teacher Demo](https://github.com/Python-grp/PFM/releases/download/v2.0.0/Teacher.mp4)
 
 #### 👨‍🎓 Student Demo
- [Watch Student Demo](your-student-video-link)
+ [Watch Student Demo](https://github.com/Python-grp/PFM/releases/download/v3.0.0/student.mp4)
 
 
 ### 📸 Screenshots
@@ -189,7 +189,6 @@ password: 123456
 ![Teachers](link)
 
 #### 👨‍🎓 Student Management
-![Image](https://github.com/user-attachments/assets/1c9f9780-09a7-4065-827b-419c860ee18b)
 
 ![Image](https://github.com/user-attachments/assets/683dd4de-fde2-4ec8-99b8-126b54c86835)
 
